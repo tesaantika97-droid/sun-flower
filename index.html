@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Temukan bunga emas di antara bunga-bunga lainnya! Game web interaktif dengan tema pastel yang seru, estetis, dan melatih ketelitian visual.">
+    <title>Find The Golden Flower 🌻 - Game Web Estetik & Menyenangkan</title>
+    <!-- Google Fonts: Quicksand (Playful & Rounded) and Inter (Clean & Modern) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars-bg" id="starsBg"></div>
+
+    <main class="game-container">
+        <!-- HEADER GAME -->
+        <header class="game-header">
+            <h1 class="game-title">Find The Golden Flower <span class="emoji-bounce">🌻</span></h1>
+            
+            <section class="stats-panel" aria-label="Statistik Permainan">
+                <div class="stat-card score-card">
+                    <span class="stat-label">SKOR</span>
+                    <span class="stat-value" id="scoreVal">0</span>
+                </div>
+                <div class="stat-card high-score-card">
+                    <span class="stat-label">HIGH SCORE</span>
+                    <span class="stat-value" id="highScoreVal">0</span>
+                </div>
+                <div class="stat-card level-card">
+                    <span class="stat-label">LEVEL</span>
+                    <span class="stat-value" id="levelVal">1</span>
+                </div>
+                <div class="stat-card timer-card">
+                    <span class="stat-label">WAKTU</span>
+                    <span class="stat-value" id="timerVal">30s</span>
+                </div>
+            </section>
+
+            <!-- Progress Bar Waktu -->
+            <div class="timer-bar-container" aria-label="Sisa Waktu">
+                <div class="timer-bar" id="timerBar" style="width: 100%;"></div>
+            </div>
+        </header>
+
+        <!-- GRID BUNGA -->
+        <section class="grid-section">
+            <div class="grid" id="grid" role="region" aria-label="Papan Bunga">
+                <!-- 16 kartu bunga akan di-generate oleh JS -->
+            </div>
+        </section>
+
+        <!-- FOOTER / KETERANGAN -->
+        <footer class="game-footer">
+            <p>Temukan bunga matahari emas 🌻 secepat mungkin sebelum waktu habis! Klik salah untuk penalti waktu.</p>
+        </footer>
+    </main>
+
+    <!-- NOTIFIKASI LEVEL UP -->
+    <div class="level-notice-overlay hidden" id="levelNoticeOverlay">
+        <div class="level-notice" id="levelNotice">
+            <h2>LEVEL UP! 🌟</h2>
+            <p id="levelNoticeBonus">+3 DETIK BONUSS!</p>
+        </div>
+    </div>
+
+    <!-- MODAL MULAI (START MODAL) -->
+    <div class="modal-overlay show" id="startModal">
+        <article class="modal-content">
+            <div class="modal-badge">🌻</div>
+            <h2 class="modal-title">Find The Golden Flower</h2>
+            <p class="modal-text">
+                Bisakah kamu menemukan bunga emas tersembunyi? Di setiap level, posisi bunga akan diacak. Temukan bunga 🌻 di antara bunga-bunga cantik lainnya secepat mungkin!
+            </p>
+            <div class="rules-box">
+                <h3>Aturan Main:</h3>
+                <ul>
+                    <li>🌻 Menemukan bunga emas: <strong>+10 Skor</strong>, <strong>Level Up</strong>, dan <strong>+3 Detik</strong>.</li>
+                    <li>🌸 Klik bunga biasa: Penalti <strong>-1 Detik</strong> dan bunga tetap terbuka.</li>
+                    <li>⏱️ Waktu awal <strong>30 Detik</strong>. Capai skor tertinggi sebelum waktu habis!</li>
+                </ul>
+            </div>
+            <button class="btn btn-primary" id="startButton">Mulai Main</button>
+        </article>
+    </div>
+
+    <!-- MODAL GAME OVER -->
+    <div class="modal-overlay" id="gameOverModal">
+        <article class="modal-content game-over-content">
+            <div class="modal-badge dead-flower">🥀</div>
+            <h2 class="modal-title">Waktu Habis!</h2>
+            <p class="modal-text">Permainan selesai. Kamu telah bermain dengan hebat!</p>
+            
+            <div class="results-board">
+                <div class="result-item">
+                    <span class="result-label">Level Terakhir:</span>
+                    <span class="result-value" id="finalLevel">1</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Skor Akhir:</span>
+                    <span class="result-value" id="finalScore">0</span>
+                </div>
+                <div class="result-item high-score-highlight hidden" id="newHighScoreAlert">
+                    🎉 NEW HIGH SCORE! 🎉
+                </div>
+            </div>
+
+            <button class="btn btn-primary" id="restartButton">Main Lagi</button>
+        </article>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
